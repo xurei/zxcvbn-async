@@ -1,0 +1,18 @@
+{
+  "name": "zxcvbn-async",
+  "version": "0.0.1",
+  "description": "Loads zxcvbn asynchronously on demand",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "node_modules/.bin/eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zxcvbn",
+    "password",
+    "async",
+    "browser"
+  ],
+  "author": "Olivier Bourdoux",
+  "license": "MIT"
+}
