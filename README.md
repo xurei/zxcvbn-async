@@ -85,5 +85,5 @@ Loads the library if not done yet.
 - `err` : error object, if any
 - `zxcvbn` : the `zxcvbn` function (See the [zxcvbn docs](https://www.npmjs.com/package/zxcvbn) for details) 
 
-##TODO 
+## TODO 
 - Write tests
