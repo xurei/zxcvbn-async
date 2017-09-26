@@ -17,7 +17,7 @@ $ npm install zxcvbn
 
 ## Usage
 
-`zxcvbn-async` provides two modes of operation : async and mimic sync
+`zxcvbn-async` provides two modes of operation : async and mimic sync.
 
 ### Async mode (recommended)
 This mode is the typical one when working with async code in JS. It's the recommended one for a new 
@@ -27,7 +27,7 @@ project or if you don't have to rewrite a lot of code.
 ```javascript
 var zxcvbnAsync = require('zxcvbn-async');
 
-zxcvbnAsync.load(function(err, zxcvbn) {
+zxcvbnAsync.load({}, function(err, zxcvbn) {
     var results = zxcvbn(password, user_inputs);
 });
 ```
@@ -36,7 +36,7 @@ zxcvbnAsync.load(function(err, zxcvbn) {
 ```javascript
 var zxcvbnAsync = require('zxcvbn-async');
 
-zxcvbnAsync.load()
+zxcvbnAsync.load({})
 .then((zxcvbn) => {
     var results = zxcvbn(password, user_inputs);
 });
@@ -47,7 +47,7 @@ This mode mimics the synchronous loading of `zxcvbn`. If you try to use it befor
 the result object will be filled with `-1` values. 
 ```javascript
 var zxcvbnAsync = require('zxcvbn-async');
-var zxcvbn = zxcvbnAsync.load({ global: true });
+var zxcvbn = zxcvbnAsync.load({ sync: true });
 ```
 
 If the library hasn't loaded yet, the result will be :
@@ -62,4 +62,20 @@ result = {
 	sequence: [],
 	calc_time: 0
 }
-```  
+```
+
+## API
+
+### `zxcvbnAsync.load(options, cb)`
+Loads the library if not done yet.
+
+`options` : 
+- `sync` : If `true`, uses the mimic sync mode. (default: `false`)
+- `libUrl` : If set, the path of the library (default: the latest version from [CDNJS](https://cdnjs.com/libraries/zxcvbn), currently `4.4.2`)
+
+`cb` : `function(err, zxcvbn)`
+- `err` : error object, if any
+- `zxcvbn` : the `zxcvbn` function (See the [zxcvbn docs](https://www.npmjs.com/package/zxcvbn) for details) 
+
+##TODO 
+- Write tests
