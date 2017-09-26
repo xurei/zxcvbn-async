@@ -1,7 +1,7 @@
 {
   "name": "zxcvbn-async",
   "version": "0.0.1",
-  "description": "Loads zxcvbn asynchronously on demand",
+  "description": "A Webpack/Browserify/... asynchronous loader for zxcvbn",
   "main": "index.js",
   "scripts": {
     "pretest": "node_modules/.bin/eslint .",
