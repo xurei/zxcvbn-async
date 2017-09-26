@@ -1,5 +1,11 @@
 # zxcvbn-async
 
+[![npm](https://img.shields.io/npm/v/zxcvbn-async.svg)](https://www.npmjs.com/package/zxcvbn-async)
+[![GitHub issues](https://img.shields.io/github/issues/xurei/zxcvbn-async.svg)](https://github.com/xurei/zxcvbn-async/issues)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/xurei/zxcvbn-async/master/LICENSE.txt)
+[![Codacy grade](https://img.shields.io/codacy/grade/2dd191109774467db47c0dc8afdf605c.svg)](https://www.codacy.com/app/xurei/zxcvbn-async)
+
+
 [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/xurei/donate)
 
 A Webpack/Browserify/... asynchronous loader for [zxcvbn](https://www.npmjs.com/package/zxcvbn)
