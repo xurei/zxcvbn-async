@@ -1,5 +1,7 @@
 # zxcvbn-async
 
+[![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/xurei/donate)
+
 A Webpack/Browserify/... asynchronous loader for [zxcvbn](https://www.npmjs.com/package/zxcvbn)
 
 ## Motivation 
