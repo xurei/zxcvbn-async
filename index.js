@@ -16,19 +16,37 @@ module.exports = {
 	}
 };
 
+var LOAD_SUCCESS = +1;
+var LOAD_ERROR = -1;
+var hasLoaded = false;
+var loadResult = 0;
+
 function addScriptTag(url, loadCallback, errorCallback) {
-	var head = global.document.getElementsByTagName('head')[0];
-	var script = global.document.createElement('script');
-	script.type = 'text/javascript';
-	script.async = true;
-	script.onload = function() {
-		loadCallback();
-	};
-	script.onerror = function() {
-		errorCallback();
-	};
-	script.src = url;
-	head.appendChild(script);
+	if (!hasLoaded) {
+		hasLoaded = true;
+		var head = global.document.getElementsByTagName('head')[0];
+		var script = global.document.createElement('script');
+		script.type = 'text/javascript';
+		script.async = true;
+		script.onload = function() {
+			loadResult = LOAD_SUCCESS;
+			loadCallback();
+		};
+		script.onerror = function() {
+			loadResult = LOAD_ERROR;
+			errorCallback();
+		};
+		script.src = url;
+		head.appendChild(script);
+	}
+	else {
+		if (loadResult === LOAD_SUCCESS) {
+			loadCallback();
+		}
+		else if (loadResult === LOAD_ERROR) {
+			errorCallback();
+		}
+	}
 }
 
 var library = null;
