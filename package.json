@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "node_modules/.bin/eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "rimraf lib/* && babel src -d lib",
-    "prepublish": "npm run compile"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "zxcvbn",
