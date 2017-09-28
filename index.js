@@ -1,7 +1,7 @@
 var debug = console.debug || console.log;
 
 module.exports = {
-	load(_options, callback) {
+	load: function(_options, callback) {
 		var options = Object.assign({
 			sync: false,
 			libUrl: 'https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js'
