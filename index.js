@@ -4,7 +4,8 @@ module.exports = {
 	load: function(_options, callback) {
 		var options = Object.assign({
 			sync: false,
-			libUrl: 'https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js'
+			libUrl: 'https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js',
+			libIntegrity: 'sha384-jhGcGHNZytnBnH1wbEM3KxJYyRDy9Q0QLKjE65xk+aMqXFCdvFuYIjzMWAAWBBtR'
 		}, _options);
 		
 		if (options.sync) {
@@ -21,12 +22,16 @@ var LOAD_ERROR = -1;
 var hasLoaded = false;
 var loadResult = 0;
 
-function addScriptTag(url, loadCallback, errorCallback) {
+function addScriptTag(url, integrity, loadCallback, errorCallback) {
 	if (!hasLoaded) {
 		hasLoaded = true;
 		var head = global.document.getElementsByTagName('head')[0];
 		var script = global.document.createElement('script');
 		script.type = 'text/javascript';
+		if (integrity) {
+			script.integrity = integrity;
+			script.crossOrigin = 'anonymous';
+		}
 		script.async = true;
 		script.onload = function() {
 			loadResult = LOAD_SUCCESS;
@@ -51,7 +56,7 @@ function addScriptTag(url, loadCallback, errorCallback) {
 
 var library = null;
 function syncMode(options) {
-	addScriptTag(options.libUrl, function() {
+	addScriptTag(options.libUrl, options.libIntegrity, function() {
 		debug('zxcvbn loaded');
 		library = global.zxcvbn;
 	}, function() {
@@ -84,7 +89,7 @@ function syncMode(options) {
 
 function asyncMode(options, callback) {
 	if (typeof(callback) === 'function') {
-		addScriptTag(options.libUrl, function() {
+		addScriptTag(options.libUrl, options.libIntegrity, function() {
 			callback(null, global.zxcvbn);
 		}, function() {
 			callback(new Error('Cannot load zxcvbn'));
@@ -92,7 +97,7 @@ function asyncMode(options, callback) {
 	}
 	else {
 		return new Promise(function(resolve, reject) {
-			addScriptTag(options.libUrl, function() {
+			addScriptTag(options.libUrl, options.libIntegrity, function() {
 				resolve(global.zxcvbn);
 			}, function() {
 				reject(new Error('Cannot load zxcvbn'));
