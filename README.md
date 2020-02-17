@@ -80,6 +80,7 @@ Loads the library if not done yet.
 `options` : 
 - `sync` : If `true`, uses the mimic sync mode. (default: `false`)
 - `libUrl` : If set, the path of the library (default: the latest version from [CDNJS](https://cdnjs.com/libraries/zxcvbn), currently `4.4.2`)
+- `libIntegrity` : If set, the integrity checksum for libUrl. [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
 
 `cb` : `function(err, zxcvbn)`
 - `err` : error object, if any
