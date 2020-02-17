@@ -86,5 +86,10 @@ Loads the library if not done yet.
 - `err` : error object, if any
 - `zxcvbn` : the `zxcvbn` function (See the [zxcvbn docs](https://www.npmjs.com/package/zxcvbn) for details) 
 
+## Contributors
+
+- <img alt="xurei" src="https://avatars.githubusercontent.com/xurei"  width="32" style="background: #fff"/> [xurei](https://github.com/xurei): Author, Maintainer
+- <img alt="mlogan" src="https://avatars.githubusercontent.com/mlogan" width="32" style="background: #fff"/> [mlogan](https://github.com/mlogan): Contributor
+
 ## TODO 
 - Write tests
